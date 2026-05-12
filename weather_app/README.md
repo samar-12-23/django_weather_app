@@ -1,0 +1,1 @@
+This README file is for my django weather App
