@@ -1,6 +1,10 @@
 from django.shortcuts import render
+from django.conf import settings
 import json
 import urllib.request
+
+
+api_key = settings.OPENWEATHER_API_KEY  # fetched from .env
 
 def index(request):
     city = ''
@@ -11,7 +15,7 @@ def index(request):
         if city:
             res = urllib.request.urlopen(
                 'http://api.openweathermap.org/data/2.5/weather?q=' + city +
-                '&appid=d04bac7541500076428d634567772c7e'
+                '&appid' + api_key
             ).read()
             json_data = json.loads(res)
             data = {
